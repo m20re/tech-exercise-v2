@@ -29,9 +29,9 @@ SECRET_KEY = os.getenv('DJANGO_SECRETKEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['34.118.204.61']
+ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
 
-
+'35.202.81.101'
 # Application definition
 
 INSTALLED_APPS = [
@@ -77,23 +77,23 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'blog',
-        'USER': os.getenv('POSTGRE_USER'),
-        'PASSWORD': os.getenv('POSTGRE_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'blog',
+#         'USER': os.getenv('POSTGRE_USER'),
+#         'PASSWORD': os.getenv('POSTGRE_PASSWORD'),
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 
