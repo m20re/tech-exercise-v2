@@ -1,7 +1,10 @@
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
 from django.db.models.functions import Lower
-from  django.contrib.auth.models import AbstractUser
+
+from django.contrib.auth.models import AbstractUser
+
 
 class CustomUser(AbstractUser):
     pass
@@ -12,6 +15,13 @@ class CustomUser(AbstractUser):
 class Post(models.Model):
     """Model representing an online post"""
     title =  models.CharField(max_length=100)
+    # only one unique username can exist at a time
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,  # if the user is deleted, remove everything else
+        blank=True,
+        null=True
+    )
     description = models.CharField(max_length=100)
     content = models.TextField()
 
