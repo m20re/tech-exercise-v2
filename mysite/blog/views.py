@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.views import generic
 from .models import Post, CustomUser
+
 # Create your views here.
 
 def index(request):
@@ -18,3 +20,7 @@ def index(request):
     
     # Render the HTML template index.html with information within context
     return render(request, 'index.html', context=context)
+
+class PostListView(generic.ListView):
+    model = Post
+    context_object_name = 'post_list'
