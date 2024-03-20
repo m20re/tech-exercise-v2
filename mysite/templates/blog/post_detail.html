@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ post.title }}</title>
-</head>
-<body>
-    <h1>{{ post.title }}</h1>
-    <p><strong>Author:</strong> {{ post.author }}</p>
-    <div>
-        <h2>Description</h2>
-        <p>{{ post.description }}</p>
-    </div>
-    <div>
-        <h2>Content</h2>
-        <p>{{ post.content }}</p>
-    </div>
-</body>
-</html>
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ post.title }}</h1>
+
+  <p><strong>Author:</strong> <a href=""> {{ post.author }}</a></p>
+  
+  <p><strong>Description:</strong> {{ post.description }}</p>
+  
+  <p><strong>Content:</strong> {{ post.content|linebreaksbr }}</p>
+
+{% endblock %}
