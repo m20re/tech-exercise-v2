@@ -23,4 +23,8 @@ def index(request):
 
 class PostListView(generic.ListView):
     model = Post
+    paginate_by = 10
     context_object_name = 'post_list'
+
+class PostDetailView(generic.DetailView):
+    model = Post
