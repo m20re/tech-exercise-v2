@@ -28,3 +28,15 @@ class PostListView(generic.ListView):
 
 class PostDetailView(generic.DetailView):
     model = Post
+
+class AuthorListView(generic.ListView):
+    model = CustomUser
+    context_object_name = 'authors'
+    template_name = 'blog/author_list.html'
+
+
+class AuthorDetailView(generic.DetailView):
+    model = CustomUser
+    template_name = 'blog/author_list.html'
+    context_object_name = 'author'
+

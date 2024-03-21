@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Author: {{ author.username }}</h1>
+
+  <h2>Posts by {{ author.username }}</h2>
+  <ul>
+    {% for post in author.post_set.all %}
+      <li>
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a> - {{ post.description }}
+      </li>
+    {% empty %}
+      <li>This author has no posts.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
