@@ -13,6 +13,9 @@ def index(request):
     # Prints the amount of users
     num_users = CustomUser.objects.all().count()
 
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
     context = {
         'num_users' : num_users,
         'num_posts' : num_posts,
