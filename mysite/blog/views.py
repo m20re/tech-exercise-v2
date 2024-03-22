@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Post, CustomUser
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -42,4 +43,8 @@ class AuthorDetailView(generic.DetailView):
     model = CustomUser
     template_name = 'blog/author_list.html'
     context_object_name = 'author'
+
+@login_required(login_url="/accounts/login")
+def post_create(request):
+    return render(request, 'blog/post_create.html')
 
