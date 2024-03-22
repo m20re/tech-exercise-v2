@@ -24,6 +24,9 @@
                         <li><a href="{% url 'blog:index' %}">Home</a></li>
                         <li><a href="{% url 'blog:posts' %}">All Posts</a></li>
                         <li><a href="{% url 'blog:authors' %}">All Authors</a></li>
+                        <li><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">{% csrf_token %}
+                            <button type="submit">Logout</button>
+                        </form></li>
                     </ul>
                     {% endblock %}
                 </div>
