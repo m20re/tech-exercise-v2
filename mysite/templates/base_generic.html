@@ -21,9 +21,9 @@
                 <div class="col-sm-2">
                     {% block sidebar %}
                     <ul class="sidebar-nav">
-                        <li><a href="{% url 'index' %}">Home</a></li>
-                        <li><a href="{% url 'posts' %}">All Posts</a></li>
-                        <li><a href="{% url 'authors' %}">All Authors</a></li>
+                        <li><a href="{% url 'blog:index' %}">Home</a></li>
+                        <li><a href="{% url 'blog:posts' %}">All Posts</a></li>
+                        <li><a href="{% url 'blog:authors' %}">All Authors</a></li>
                     </ul>
                     {% endblock %}
                 </div>
