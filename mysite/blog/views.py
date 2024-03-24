@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from .models import Post, CustomUser
 from django.contrib.auth.decorators import login_required
+from . import forms
 
 # Create your views here.
 
@@ -46,5 +47,12 @@ class AuthorDetailView(generic.DetailView):
 
 @login_required(login_url="/accounts/login")
 def post_create(request):
-    return render(request, 'blog/post_create.html')
+    if request.method == 'POST':
+        form = forms.CreatePost(request.POST, request.FILES)
+        if form.is_valid():
+            # save article to the database
+            return redirect('blog:index')
+    else:
+        form = forms.CreatePost()
+    return render(request, 'blog/post_create.html', { 'form': form })
 
