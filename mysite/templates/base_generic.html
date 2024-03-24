@@ -24,9 +24,15 @@
                         <li><a href="{% url 'blog:index' %}">Home</a></li>
                         <li><a href="{% url 'blog:posts' %}">All Posts</a></li>
                         <li><a href="{% url 'blog:authors' %}">All Authors</a></li>
+                        {% if user.is_authenticated %}
+                        <li class="highlight"><a href="{% url 'blog:create' %}">New Post</a></li>
                         <li><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">{% csrf_token %}
                             <button type="submit">Logout</button>
                         </form></li>
+                        {% else %}
+                            <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                            <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+                        {% endif %}
                     </ul>
                     {% endblock %}
                 </div>
