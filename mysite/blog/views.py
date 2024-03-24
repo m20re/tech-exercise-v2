@@ -51,6 +51,9 @@ def post_create(request):
         form = forms.CreatePost(request.POST, request.FILES)
         if form.is_valid():
             # save article to the database
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
             return redirect('blog:index')
     else:
         form = forms.CreatePost()
